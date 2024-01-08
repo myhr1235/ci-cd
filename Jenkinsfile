@@ -22,7 +22,7 @@ pipeline {
                 echo 'Clonning Repository'
 
                 git url: 'https://github.com/myhr1235/ci-cd.git',
-                    branch: 'mani',
+                    branch: 'main',
                     credentialsId: 'jenkins'
             }
 
@@ -140,7 +140,7 @@ pipeline {
 
             dir ('./server'){
                 sh '''
-                docker rm -f $(docker ps -aq)
+                
                 docker run -p 80:80 -d server
                 '''
             }

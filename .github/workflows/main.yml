@@ -33,7 +33,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: emoldino-demo
         run: |
-          docker build --cache-from=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest -f ./infra/Dockerfile.base -t tag_name .
+          docker build --cache-from=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest -f ./ci-cd/Dockerfile -t tag_name .
           docker tag image_name ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
           docker tag image_name ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
           docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }} --all-tags
